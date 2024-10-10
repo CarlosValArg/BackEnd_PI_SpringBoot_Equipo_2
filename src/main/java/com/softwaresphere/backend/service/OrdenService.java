@@ -1,5 +1,6 @@
 package com.softwaresphere.backend.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class OrdenService {
 	private static final ArrayList<Orden> lista = new ArrayList<Orden> ();
 	 
 	public OrdenService() {
-	  lista.add(new Orden ("2024-10-09", "referencia a la orden de portafolio web"));
+	  lista.add(new Orden (null, "referencia a la orden de portafolio web"));
 	  }// constructor
 	
 	public List<Orden> listarOrdenes() {
@@ -47,11 +48,11 @@ public class OrdenService {
 		  return ord;
 	}
 
-	public Orden updateOrden(Long ordenId, String fecha, String descripcion) {
+	public Orden updateOrden(Long ordenId, LocalDate fechaCreacion, String descripcion) {
 		Orden ord=null;
 			for (Orden orden : lista) {
 				if(orden.getId()==ordenId) {
-					if (fecha != null) orden.setFecha(fecha);
+					if (fechaCreacion != null) orden.setFechaCreacion(fechaCreacion);
 					if (descripcion != null) orden.setDescripcion(descripcion); 
 					ord=orden;
 					break;

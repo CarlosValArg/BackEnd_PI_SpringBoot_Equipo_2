@@ -49,9 +49,9 @@ public class OrdenController {
 		
 		@PutMapping(path="{ordenId}") // http://localhost:8080/api/productos/1
 		 public Orden updateOrden (@PathVariable ("ordenId") Long ordenId,
-		         @RequestParam(required=false) String fecha,
+		         @RequestParam(required=false) LocalDate fechaCreacion,
 		         @RequestParam(required=false) String descripcion) {
-		  return ordenService.updateOrden(ordenId, fecha, descripcion);
+		  return ordenService.updateOrden(ordenId, fechaCreacion, descripcion); 
 		 }// updateProducto
 
 

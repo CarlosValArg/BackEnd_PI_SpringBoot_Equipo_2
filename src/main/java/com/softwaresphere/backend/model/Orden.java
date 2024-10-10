@@ -1,15 +1,18 @@
 package com.softwaresphere.backend.model;
 
+import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Orden {
 	private Long id;
-	private String fecha;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	private LocalDate fechaCreacion;
 	private String descripcion;
 	private static Long total = Long.valueOf(0);
 	
-	public Orden(String fecha, String descripcion) {
-		this.fecha = fecha;
+	public Orden(String string, String descripcion) {
+		this.fechaCreacion = LocalDate.now();
 		this.descripcion = descripcion;
 		Orden.total++;
 		this.id = Orden.total;
@@ -28,12 +31,12 @@ public class Orden {
 		this.id = id;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public String getDescripcion() {
@@ -46,7 +49,7 @@ public class Orden {
 
 	@Override
 	public String toString() {
-		return "Orden [id=" + id + ", fecha=" + fecha + ", descripcion=" + descripcion + "]";
+		return "Orden [id=" + id + ", fechaCreacion=" + fechaCreacion + ", descripcion=" + descripcion + "]";
 	}//toString
 	
 	
