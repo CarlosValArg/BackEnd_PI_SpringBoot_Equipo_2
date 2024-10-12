@@ -3,70 +3,69 @@ package com.softwaresphere.backend.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softwaresphere.backend.model.Orden;
 import com.softwaresphere.backend.model.Servicio;
+import com.softwaresphere.backend.repository.OrdenRepository;
+import com.softwaresphere.backend.repository.ServicioRepository;
 
 @Service
 public class OrdenService {
-	private static final ArrayList<Orden> lista = new ArrayList<Orden> ();
-	 
-	public OrdenService() {
-	  lista.add(new Orden (null, "referencia a la orden de portafolio web"));
-	  }// constructor
+	public final OrdenRepository ordenRepository;
+    @Autowired
+    public OrdenService(OrdenRepository ordenRepository) {
+		this.ordenRepository = ordenRepository;
+	}//constructor
 	
-	public List<Orden> listarOrdenes() {
-		return lista;
-	}
+    public List<Orden> listarOrdenes() {
+		return ordenRepository.findAll();
+	}//listarOrdenes
 
 	public Orden obtenerOrdenPorId(Long ordId) {
-		Orden ord = null;
-		for (Orden orden : lista) {
-			if(orden.getId()==ordId) {
-				ord=orden;
-				break;
-			}//if
-		}//foreach
-		return ord;
-	}//obtenerOrdenPorId
+		return ordenRepository.findById(ordId).orElseThrow(
+				()-> new IllegalArgumentException("La orden con el id [" + ordId + "] no existe")
+				);
+	}//obtenerOrden
 
 	public Orden guardarOrden(Orden orden) {
-		lista.add(orden);
-		return orden;
-	}
-	
-	public static Orden eliminarOrden(Long ordId) {
-		Orden ord = null;
-		  for (Orden orden : lista) {
-		   if (orden.getId()==ordId) {
-		    ord = lista.remove(lista.indexOf(orden));
-		    break;
-		   }// if
-		  }// foreach
-		  return ord;
+	    Optional<Orden> ord = ordenRepository.findByDescripcion(orden.getDescripcion());
+	    if (ord.isEmpty()) { // No existe la orden
+	        // Suponiendo que tienes el id del usuario en algún lado
+	        Long usuarioId = orden.getUsuarioid(); // Implementa este método según tu lógica
+	        orden.setUsuarioid(usuarioId);
+	        return ordenRepository.save(orden);
+	    } else {
+	        System.out.println("La orden [" + orden.getDescripcion() + "] ya se encuentra registrada");
+	        return null;
+	    }
 	}
 
-	public Orden updateOrden(Long ordenId, LocalDate fechaCreacion, String descripcion) {
+	
+	public Orden eliminarOrden(Long ordId) {
 		Orden ord=null;
-			for (Orden orden : lista) {
-				if(orden.getId()==ordenId) {
-					if (fechaCreacion != null) orden.setFechaCreacion(fechaCreacion);
-					if (descripcion != null) orden.setDescripcion(descripcion); 
-					ord=orden;
-					break;
-				}//if
-			}//foreach
-			return ord;
-		}//updateOrden
-	
-	
-	
-	
-	
+		if(ordenRepository.existsById(ordId)) {	
+			ord=ordenRepository.findById(ordId).get();
+			ordenRepository.deleteById(ordId);
+		}//if exists
+		return ord;
+	}//eliminarOrden
+
+	public Orden updateOrden(Long ordId, LocalDate fecha, String descripcion) {
+		Orden ord=null;
+		if(ordenRepository.existsById(ordId)) {
+			Orden orden = ordenRepository.findById(ordId).get();
+				if (fecha != null) orden.setFecha(fecha);
+				if (descripcion != null) orden.setDescripcion(descripcion);  
+				ordenRepository.save(orden);
+				ord=orden;
+		}//ifExists
+		return ord;
+	}//updateServicio
 	
 
-	
 
-}
+}//class OrdenService

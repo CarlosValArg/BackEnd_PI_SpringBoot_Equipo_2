@@ -45,13 +45,13 @@ public class OrdenController {
 		return ordenService.guardarOrden(orden); } 
 		
 		@DeleteMapping(path="{ordenId}") public Orden eliminarOrden(@PathVariable ("ordenId") Long id) {
-		return OrdenService.eliminarOrden(id); }
+		return ordenService.eliminarOrden(id); }
 		
 		@PutMapping(path="{ordenId}") // http://localhost:8080/api/productos/1
 		 public Orden updateOrden (@PathVariable ("ordenId") Long ordenId,
-		         @RequestParam(required=false) LocalDate fechaCreacion,
+		         @RequestParam(required=false) LocalDate fecha,
 		         @RequestParam(required=false) String descripcion) {
-		  return ordenService.updateOrden(ordenId, fechaCreacion, descripcion); 
+		  return ordenService.updateOrden(ordenId, fecha, descripcion); 
 		 }// updateProducto
 
 

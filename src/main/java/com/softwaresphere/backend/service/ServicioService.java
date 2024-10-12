@@ -2,79 +2,69 @@ package com.softwaresphere.backend.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.softwaresphere.backend.model.Servicio;
 import com.softwaresphere.backend.model.Usuario;
+import com.softwaresphere.backend.repository.ServicioRepository;
+import com.softwaresphere.backend.repository.UsuarioRepository;
 @Service
 public class ServicioService {
-	private static final ArrayList<Servicio> lista = new ArrayList<Servicio> ();
-	 
-	public ServicioService() {
-	  lista.add(new Servicio ("Apps Smart Watch",
-			  "Los desarrolladores de Software Sphere tenemos amplia experiencia en el desarrollo de aplicaciones smartwatch que combinan funcionalidad avanzada con una experiencia de usuario intuitiva, cotiza una aquí", "https://m.media-amazon.com/images/I/61gpLj2KvTL._AC_SL1500_.jpg", 
-			  600.00));
-	  }// constructor
+	public final ServicioRepository servicioRepository;
+
+    @Autowired
+    public ServicioService(ServicioRepository servicioRepository) {
+		this.servicioRepository = servicioRepository;
+	}//constructor
 	
-	public List<Servicio> listarServicios() {
-		// TODO Auto-generated method stub
-		return lista;
-	}
+    public List<Servicio> listarServicios() {
+		return servicioRepository.findAll();
+	}//listarServicios
 
 
 
-	public Servicio obtenerServicioPorId(Long servId) {
-		Servicio serv = null;
-		for (Servicio servicio : lista) {
-			if(servicio.getId()==servId) {
-				serv=servicio;
-				break;
-			}//if
-		}//foreach
-		return serv;
-	}//obtenerServicioPorId
+    public Servicio obtenerServicioPorId(Long servId) {
+		return servicioRepository.findById(servId).orElseThrow(
+				()-> new IllegalArgumentException("El servicio con el id [" + servId + "] no existe")
+				);
+	}//obtenerServicio
 
 	public Servicio eliminarServicio(Long servId) {
-		Servicio serv = null;
-		  for (Servicio servicio : lista) {
-		   if (servicio.getId()==servId) {
-		    serv = lista.remove(lista.indexOf(servicio));
-		    break;
-		   }// if
-		  }// foreach
-		  return serv;
-}//eliminarServicio
+		Servicio serv=null;
+		if(servicioRepository.existsById(servId)) {	
+			serv=servicioRepository.findById(servId).get();
+			servicioRepository.deleteById(servId);
+		}//if exists
+		return serv;
+	}//eliminarServicio
 
 	public Servicio guardarServicio(Servicio servicio) {
-		Servicio serv = null;
-		boolean flag = false;
-		for(Servicio s : lista) {
-			if (s.getNombre().equals(servicio.getNombre())) {
-				flag = true;
-				break;
-			}//if
-		}//foreach
-		if(! flag) {
-			lista.add(servicio);
-			serv=servicio;
-		}//!flag
-		return serv;
-	}//guardarServicio
-
-	public Servicio updateServicio(Long servicioId, String nombre, String descripcion, String imagen,
+		Optional<Servicio> serv = servicioRepository.findByNombre(servicio.getNombre());
+		  if(serv.isEmpty()) { // No existe la descripción
+//		   usuario.setPassword(encoder.encode(usuario.getPassword()) );
+		   return servicioRepository.save(servicio);
+		  } else {
+		   System.out.println("El servicio [" + servicio.getNombre()
+		     + "] ya se encuentra registrado");
+		   return null;
+		  } // if isEmpty
+		 }// guardarServicio
+	
+	public Servicio updateServicio(Long servId, String nombre, String descripcion, String imagen,
 			Double cotizacion) {
 		Servicio serv=null;
-		for (Servicio servicio : lista) {
-			if(servicio.getId()==servicioId) {
+		if(servicioRepository.existsById(servId)) {
+			Servicio servicio = servicioRepository.findById(servId).get();
 				if (nombre != null) servicio.setNombre(nombre);
 				if (descripcion != null) servicio.setDescripcion(descripcion); 
 				if (imagen != null) servicio.setImagen(imagen);
 				if (cotizacion != null) servicio.setCotizacion(cotizacion.doubleValue()); 
+				servicioRepository.save(servicio);
 				serv=servicio;
-				break;
-			}//if
-		}//foreach
+		}//ifExists
 		return serv;
 	}//updateServicio
 

@@ -31,21 +31,21 @@ public class UsuarioController {
 	return usuarioService.listarUsuarios(); }
 	
 	@GetMapping(path="{userId}")
-	public Usuario obtenerUsuarioPorId(@PathVariable Long id) {
-	return usuarioService.obtenerUsuarioPorId(id); }
+	public Usuario obtenerUsuarioPorId(@PathVariable Long userId) {
+	return usuarioService.obtenerUsuarioPorId(userId); }
 	
 	@PostMapping
 	public Usuario guardarUsuario(@RequestBody Usuario usuario) {
 	return usuarioService.guardarUsuario(usuario); } 
 	
-	@DeleteMapping(path="{userId}") public Usuario eliminarUsuario(@PathVariable ("userId") Long id) {
-	return usuarioService.eliminarUsuario(id); }
+	@DeleteMapping(path="{userId}") public Usuario eliminarUsuario(@PathVariable ("userId") Long userId) {
+	return usuarioService.eliminarUsuario(userId); }
 	
 	@PutMapping(path="{userId}") // http://localhost:8080/api/usuarios/1
 	public Usuario updateUsuario(@RequestBody ChangePassword changepassword,
 	
-	@PathVariable("userId") Long id) {
-	return usuarioService.updateUsuario(id, changepassword);
+	@PathVariable("userId") Long userId) {
+	return usuarioService.updateUsuario(userId, changepassword);
 	}// updateUsuario
 	
 	

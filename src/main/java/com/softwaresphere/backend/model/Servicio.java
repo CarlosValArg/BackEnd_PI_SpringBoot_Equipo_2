@@ -1,33 +1,41 @@
 package com.softwaresphere.backend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="servicios")
 public class Servicio {
-	private Long id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="serviciosid", unique=true, nullable=false)	
+	private Long serviciosid;
+	@Column (nullable=false)
 	private String nombre;
 	private String descripcion;
 	private String imagen;
 	private Double cotizacion;
-	private static Long total = Long.valueOf(0);
 	
 	public Servicio(String nombre, String descripcion, String imagen, Double cotizacion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.cotizacion = cotizacion;
-		Servicio.total++;
-		this.id = Servicio.total;
 	}//constructor
 	
 	public Servicio() {
-		Servicio.total++;
-		id = Servicio.total;
 	}//constructor
 
-	public Long getId() {
-		return id;
+	public Long getServiciosid() {
+		return serviciosid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setServiciosid(Long serviciosid) {
+		this.serviciosid = serviciosid;
 	}
 
 	public String getNombre() {
@@ -64,9 +72,10 @@ public class Servicio {
 
 	@Override
 	public String toString() {
-		return "Servicio [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen
-				+ ", cotizacion=" + cotizacion + "]";
+		return "Servicio [serviciosid=" + serviciosid + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", imagen=" + imagen + ", cotizacion=" + cotizacion + "]";
 	}//toString
+	
 	
 	
 

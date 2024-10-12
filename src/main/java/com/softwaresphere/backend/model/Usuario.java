@@ -1,13 +1,28 @@
 package com.softwaresphere.backend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuarios")
 public class Usuario {
-	private Long id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="usuarioid", unique=true, nullable=false)
+	private Long usuarioid;
+	@Column (nullable=false)
 	private String nombres;
 	private String apellidos;
+	@Column (nullable=false)
 	private String telefono;
+	@Column (nullable=false)
 	private String correo;
+	@Column (nullable=false)
 	private String contrasena;
-	private static Long total = Long.valueOf(0);
 	
 	
 	public Usuario(String nombres, String apellidos, String telefono, String correo, String contrasena) {
@@ -16,24 +31,17 @@ public class Usuario {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.contrasena = contrasena;
-		Usuario.total++;
-		this.id = Usuario.total;
-		
 	}//constructor
 	
 	public Usuario() {
-		Usuario.total++;
-		id = Usuario.total;
 	}//constructor
 
-	
-
-	public Long getId() {
-		return id;
+	public Long getUsuarioid() {
+		return usuarioid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUsuarioid(Long usuarioid) {
+		this.usuarioid = usuarioid;
 	}
 
 	public String getNombres() {
@@ -78,10 +86,13 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", correo=" + correo + ", contrasena=" + contrasena + "]";
-	}//toString
+		return "Usuario [usuarioid=" + usuarioid + ", nombres=" + nombres + ", apellidos=" + apellidos + ", telefono="
+				+ telefono + ", correo=" + correo + ", contrasena=" + contrasena + "]";
+	}
+
 	
+
+
 	
 	
 	
