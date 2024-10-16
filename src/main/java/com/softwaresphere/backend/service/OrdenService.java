@@ -32,17 +32,16 @@ public class OrdenService {
 	}//obtenerOrden
 
 	public Orden guardarOrden(Orden orden) {
-	    Optional<Orden> ord = ordenRepository.findByDescripcion(orden.getDescripcion());
-	    if (ord.isEmpty()) { // No existe la orden
-	        // Suponiendo que tienes el id del usuario en algún lado
-	        Long usuarioId = orden.getUsuarioid(); // Implementa este método según tu lógica
-	        orden.setUsuarioid(usuarioId);
-	        return ordenRepository.save(orden);
-	    } else {
-	        System.out.println("La orden [" + orden.getDescripcion() + "] ya se encuentra registrada");
-	        return null;
-	    }
-	}
+		Optional<Orden> ord = ordenRepository.findByDescripcion(orden.getDescripcion());
+		  if(ord.isEmpty()) { // No existe la orden
+//		   usuario.setPassword(encoder.encode(usuario.getPassword()) );
+		   return ordenRepository.save(orden);
+		  } else {
+		   System.out.println("La orden [" + orden.getDescripcion()
+		     + "] ya se encuentra registrada");
+		   return null;
+		  } // if isEmpty
+		 }// guardarOrden
 
 	
 	public Orden eliminarOrden(Long ordId) {

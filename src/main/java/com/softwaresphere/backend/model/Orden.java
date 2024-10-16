@@ -21,14 +21,12 @@ public class Orden {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private LocalDate fecha;
 	private String descripcion;
-	private Long usuarioid;
 	
 	
 	
 	public Orden(LocalDate fecha, String descripcion, Long usuarioid) {
 		this.fecha = fecha;
 		this.descripcion = descripcion;
-		this.usuarioid = usuarioid;
 	}
 
 	public Orden() {
@@ -58,23 +56,9 @@ public class Orden {
 		this.descripcion = descripcion;
 	}
 
-	public Long getUsuarioid() {
-		return usuarioid;
-	}
-
-	public void setUsuarioid(Long usuarioid) {
-		this.usuarioid = usuarioid;
-	}
-
 	@Override
 	public String toString() {
-		return "Orden [ordenid=" + ordenid + ", fecha=" + fecha + ", descripcion=" + descripcion + ", usuarioid="
-				+ usuarioid + "]";
+		return "Orden [ordenid=" + ordenid + ", fecha=" + fecha + ", descripcion=" + descripcion + "]";
 	}
-
-	
-	
-	
-	
 
 }//class Orden

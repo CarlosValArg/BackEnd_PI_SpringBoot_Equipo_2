@@ -33,24 +33,24 @@ public class ServicioController {
 		public List<Servicio> listaServicio() {
 		return servicioService.listarServicios(); }
 		
-		@GetMapping(path="{servicioId}")
-		public Servicio obtenerServicioPorId(@PathVariable Long id) {
-		return servicioService.obtenerServicioPorId(id); }
+		@GetMapping(path="{serviciosid}")
+		public Servicio obtenerServicioPorId(@PathVariable Long serviciosid) {
+		return servicioService.obtenerServicioPorId(serviciosid); }
 		
 		@PostMapping
 		public Servicio guardarServicio(@RequestBody Servicio servicio) {
 		return servicioService.guardarServicio(servicio); } 
 		
-		@DeleteMapping(path="{servicioId}") public Servicio eliminarServicio(@PathVariable ("servicioId") Long id) {
-		return servicioService.eliminarServicio(id); }
+		@DeleteMapping(path="{serviciosid}") public Servicio eliminarServicio(@PathVariable ("serviciosid") Long serviciosid) {
+		return servicioService.eliminarServicio(serviciosid); }
 		
-		@PutMapping(path="{servicioId}") // http://localhost:8080/api/productos/1
-		 public Servicio updateServicio (@PathVariable ("servicioId") Long servicioId,
+		@PutMapping(path="{serviciosid}") // http://localhost:8080/api/productos/1
+		 public Servicio updateServicio (@PathVariable ("serviciosid") Long serviciosid,
 		         @RequestParam(required=false) String nombre,
 		         @RequestParam(required=false) String descripcion,
 		         @RequestParam(required=false) String imagen,
 		         @RequestParam(required=false) Double cotizacion) {
-		  return servicioService.updateServicio(servicioId, nombre, descripcion, imagen, cotizacion);
+		  return servicioService.updateServicio(serviciosid, nombre, descripcion, imagen, cotizacion);
 		 }// updateProducto
 
 }
