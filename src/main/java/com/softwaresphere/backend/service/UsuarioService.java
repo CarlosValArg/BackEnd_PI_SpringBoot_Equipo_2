@@ -69,6 +69,17 @@ public class UsuarioService {
 		    	}//if
 			return user;
 		}//updateUsuario
+
+		public boolean validateUser(Usuario usuario) {
+			Optional<Usuario> user=usuarioRepository.findByCorreo(usuario.getCorreo());
+			if(user.isPresent()) {
+				Usuario tmpUser=user.get();
+				if(encoder.matches(usuario.getContrasena(), tmpUser.getContrasena())) {
+					return true;
+				}//if matches
+			}//isPresent
+			return false;
+		}//validateUser
 	
 }//class UsuarioService
 

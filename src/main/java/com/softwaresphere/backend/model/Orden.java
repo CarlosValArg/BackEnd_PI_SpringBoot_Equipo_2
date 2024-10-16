@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,13 +24,12 @@ public class Orden {
 	private String descripcion;
 	private Long usuarioid;
 	
-	
-	
 	public Orden(LocalDate fecha, String descripcion, Long usuarioid) {
 		this.fecha = fecha;
 		this.descripcion = descripcion;
 		this.usuarioid = usuarioid;
 	}
+
 
 	public Orden() {
 	}//constructor
@@ -57,6 +57,7 @@ public class Orden {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
 
 	public Long getUsuarioid() {
 		return usuarioid;
@@ -66,15 +67,12 @@ public class Orden {
 		this.usuarioid = usuarioid;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Orden [ordenid=" + ordenid + ", fecha=" + fecha + ", descripcion=" + descripcion + ", usuarioid="
 				+ usuarioid + "]";
 	}
 
-	
-	
-	
-	
 
 }//class Orden

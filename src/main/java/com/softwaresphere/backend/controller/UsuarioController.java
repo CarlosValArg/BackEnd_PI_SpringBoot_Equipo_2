@@ -45,9 +45,8 @@ public class UsuarioController {
 	public Usuario updateUsuario(@RequestBody ChangePassword changepassword,
 	
 	@PathVariable("userId") Long userId) {
-	return usuarioService.updateUsuario(userId, changepassword);
+	return usuarioService.updateUsuario(userId, changepassword); 
 	}// updateUsuario
-	
 	
 	
 
