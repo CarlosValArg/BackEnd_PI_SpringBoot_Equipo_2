@@ -6,6 +6,3 @@ spring.datasource.password=kjhuyt
 
 #create, create-drop, validate, update
 spring.jpa.hibernate.ddl-auto=update
-
-
-

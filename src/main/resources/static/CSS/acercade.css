@@ -1,0 +1,296 @@
+/* Acerca de nosotros*/
+#nosotros{
+    position: relative;
+    padding-top: 30px;
+    transition: transform 0.3s ease;
+    height: 375px;
+}
+#nosotros:hover {
+    
+    transform: scale(1.1);
+}
+
+.col-12.col-md-6:hover .hover-text {
+    display: block; 
+}
+
+.hover-text {
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    font-size: 18px;
+    overflow: hidden; 
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200; /* ExtraLight */
+    font-size: 36px;
+    color: #0087F5; 
+    padding-top: 20px;
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600; /* Semibold */
+    font-size: 36px;
+}
+.text-container {
+    width: 100%; /* Cambia el ancho a 100% para móviles */
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna dentro del contenedor */
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+#text-principal {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 300; /* Light */
+    margin: 0;
+    text-align: justify;
+    padding-top: 20px;
+}
+
+.card-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+    font-style: normal;
+}
+
+.col-sm{
+    margin: 0px 20px 0px 20px;
+    padding: 20px 0px 20px 0px;
+}
+h5{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600; /* Semibold */
+    font-size: 20px;
+}
+
+.card-subtitle{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; /* Light */
+    font-style: italic; /* Italic */
+    font-size: 18px;
+}
+
+
+@media(max-width:576px){
+        h1 {
+            font-size: 28px; /* Reduce el tamaño del título */
+            
+        }
+    
+        h2 {
+            font-size: 22px; /* Reduce el tamaño del subtítulo */
+        
+        }
+    
+        #text-principal,h1,h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px; /* Ajusta el tamaño del texto */
+            font-weight: 300; /* Light */
+            margin-right: 30px; /* Añade margen de 10px a izquierda y derecha */
+            padding-left: 20px; /* Asegúrate de que no haya padding adicional */
+            text-align: justify;
+        }
+        
+        #text-container {
+            width: 100%; /* El contenedor del texto ocupa el 100% del ancho */
+            height: auto; /* Ajusta la altura de acuerdo con el contenido */
+        }
+        
+        .card {
+            width: 100%; /* Las tarjetas ocupan todo el ancho de la pantalla */
+            margin: 0 10px;
+        }
+        #nosotros {
+            width: 100%;
+            height: auto;
+            display: block; /* Asegúrate de que se trate como un bloque */
+            margin: 0; /* Sin margen */
+        }
+
+        .container{
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hover-text {
+            font-size: 13px;
+            padding: 10px; 
+        }
+    }
+
+/*carrusel*/
+
+.card-carousel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.container-cards {
+    margin-left: 30px;
+}
+
+.aqua-gradient {
+    height: 150px;
+    background-image: url(../assets/fondo_tech.avif);
+    background-position: center;
+    background-size: cover;
+
+}
+
+#UB{
+    height: 150px;
+    background-image: url(../assets/UFP.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#CLE{
+    height: 150px;
+    background-image: url(../assets/CLE.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#AAO{
+    height: 150px;
+    background-image: url(../assets/AAO.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#RDB{
+    height: 150px;
+    background-image: url(../assets/RDB.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#MVC{
+    height: 150px;
+    background-image: url(../assets/MVC.avif);
+    background-position: center;
+    background-size: cover;
+}
+
+#LRM{
+    height: 150px;
+    background-image: url(../assets/LRM.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#JAD{
+    height: 150px;
+    background-image: url(../assets/JAD.jfif);
+    background-position: center;
+    background-size: cover;
+}
+
+.image {
+    margin-top: -150px;
+}
+
+.avatar-container {
+    width: 90%;
+    border: 1px solid #eee;
+}
+
+.card {
+    margin: 0 10px 0 10px; /* Espacio entre tarjetas */
+    background: linear-gradient(to bottom right, #5AE0E4, #245065); /* Estilo para el fondo degradado de cada tarjeta */
+    border-radius: 30px; /* Estilo redondeado de las cards */
+}
+
+.icon {
+    width: 24px;  /* Ajusta el ancho */
+    height: 24px; /* Ajusta la altura */
+    vertical-align: bottom; /* Alinea el ícono con el texto */;
+    position: absolute;
+    bottom: calc(5%);
+}
+
+/* Efecto al pasar el mouse */
+.card .icon:hover {
+    transform: scale(1.3); /* Aumenta el tamaño a 120% */
+    filter: brightness(1.5); /* Aumenta el brillo del ícono */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #576CBC;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-inner .card {
+    max-width: 18rem;
+    margin: 0 auto; /* Centrar las tarjetas */
+}
+
+.carousel-item {
+    text-align: center; /* Alinear el contenido de cada slide al centro */
+}
+
+/*footer*/
+
+#footer1{
+    position: relative;
+    margin-top: 150px ;
+    background-color:  #A5D7E8;
+}
+
+.text-reset{
+    text-decoration: none;
+}
+
+h6{
+    font-size: 28px;
+}
+
+a{
+    font-size: 20px;
+}

@@ -1,0 +1,52 @@
+body{
+    background-color: #19376D;
+    color: aliceblue;
+    font-size: 30px;
+    /* font-family: roboto; */
+}
+.formularioContainer{
+    padding: 30px;
+    background-color: white;
+    border-radius: 30px;
+    color: black;
+    margin: 0 auto; /* Centrar el formulario */
+    width: 600px; /* Ancho máximo del formulario */
+    margin-top: 10vh;
+}
+#btnAgregar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    border: 0;
+    border-radius: 15px;
+    background-color: #576cbc;
+    box-shadow: 0 0 20px rgba(52, 218, 216, 0.4);
+    cursor: pointer;
+    width: 400px;
+
+}
+
+#btnAgregar:hover{
+    background-color:#7189ea;
+}
+
+#uploadButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    border: 0;
+    border-radius: 15px;
+    background-color: #576cbc;
+    box-shadow: 0 0 20px rgba(52, 218, 216, 0.4);
+    cursor: pointer;
+    width: 400px;
+}
+
+#uploadButton:hover{
+    background-color:#7189ea;
+}
+
