@@ -23,7 +23,7 @@ class BackendApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
-	private final String token="Bearer: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKQ1ZhbGVuY2lhQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzI5MDQxNTc0LCJleHAiOjE3MjkwNzc1NzR9.LGVSy3c-5D8qBT3gs1cVvshZWxZg4hF0ST8-SNUdc7I";
+	private final String token="Bearer: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJdmFuTG9wQWdAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjkxODk0NjIsImV4cCI6MTcyOTIyNTQ2Mn0.9RRiFe5sBY4-sb_TfCwEHof2-sthY0FWb5HEfXCL0ao";
 	
 	@Test
 	@DisplayName("Se prueba el endpoint http://localhost/8080/api/servicios/2")
