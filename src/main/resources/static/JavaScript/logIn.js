@@ -37,37 +37,6 @@ const usuarioRegistrado = JSON.parse(localStorage.getItem('user')) || null;
 if(usuarioRegistrado){
     if(usuarioRegistrado.txtCorreo === txtCorreo.value && 
     usuarioRegistrado.txtContraseña === txtContraseña.value){
-		const myHeaders = new Headers();
-		myHeaders.append("Content-Type", "application/json");
-		
-		const raw = JSON.stringify({
-		"correo":txtCorreo.value.trim(),
-		"contrasena":txtContraseña.value});
-		const requestOptions = {
-			method:"POST",
-			headers: myHeaders,
-			body:raw,
-			redirect: "follow"
-			};
-		
-		fetch("http://localhost:8080/api/login/", requestOptions)
-		.then((response) => {
-if(!response.ok) {
-throw new Error(`Error en la autenticacion` + response.statusText);
-}
-return response.json ();
-})
-.then((result) => {
-console.log(result);
-
-const token = result.accessToken;
-
-sessionStorage.setItem(`authToken`, token);
-console.log("Token guardado: ", token);
-})
-.catch((error) => {console.log.error("Error", error);
-});
-	
         Swal.fire({
             title: '¡Inicio de sesión exitoso!',
             text: 'Serás redirigido a la página de inicio',

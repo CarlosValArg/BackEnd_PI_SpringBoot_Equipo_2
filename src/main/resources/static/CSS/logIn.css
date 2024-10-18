@@ -1,5 +1,5 @@
 body {
-    background-image: url(../Assets/foco-vector.jpg);
+    background-image: url(../assets/focoVector.jpg);
     color: white;
 }
 
@@ -27,4 +27,10 @@ button#btn-regs {
     color: white;
     right: 20px;
     top: 35%;
+}
+
+#footer1 {
+    position: relative;
+    margin-top: 150px;
+    background-color: #A5D7E8;
 }

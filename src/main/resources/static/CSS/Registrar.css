@@ -55,3 +55,8 @@ float:left;
     max-width: 100%;    
 }
 
+#footer1 {
+    position: relative;
+    margin-top: 150px;
+    background-color: #A5D7E8;
+}

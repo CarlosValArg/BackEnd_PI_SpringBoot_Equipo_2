@@ -49,7 +49,7 @@ txtCorreo.addEventListener('input', function() {
 
 // Validación en tiempo real para la Contraseña
 txtContraseña.addEventListener('input', function() {
-    const contraseñaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const contraseñaRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
     const isValid = contraseñaRegex.test(txtContraseña.value);
     txtContraseña.classList.toggle('is-invalid', !isValid);
     txtContraseña.classList.toggle('is-valid', isValid);
@@ -90,31 +90,6 @@ form.addEventListener('submit', function(event) {
             txtCorreo: txtCorreo.value,
             txtContraseña: txtContraseña.value
         };
-        
-        const userInformation={
-			"nombres": txtNombre.value.trim(),
-			"apellidos": null,
-			"telefono": txtNumero.value.trim(),
-			"correo": txtCorreo.value,
-			"contrasena": txtContraseña.value.trim()
-};
-        
-        const myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-const raw = JSON.stringify(userInformation);
-
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
-
-fetch("http://localhost:8080/api/usuarios/", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
 
         // Mostrar alerta y esperar la interacción del usuario
         Swal.fire({

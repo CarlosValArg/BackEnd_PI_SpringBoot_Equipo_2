@@ -29,11 +29,6 @@ p {
     object-fit: cover;
 }
 
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
 
 @media (max-width: 768px) {
     .carousel-item video, .carousel-item img {
@@ -76,4 +71,10 @@ h1{
     font-family: Roboto;
     font-size: 30px;
     color: white;
+}
+
+#footer1 {
+    position: relative;
+    margin-top: 150px;
+    background-color: #A5D7E8;
 }

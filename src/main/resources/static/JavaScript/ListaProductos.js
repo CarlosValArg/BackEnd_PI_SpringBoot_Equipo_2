@@ -150,4 +150,3 @@ function añadirItem(item) {
 
 // Asegúrate de que se ejecuta la función cuando el DOM está completamente cargado
 window.addEventListener('load', cargarProductos);
-

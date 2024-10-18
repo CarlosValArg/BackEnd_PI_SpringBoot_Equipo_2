@@ -81,31 +81,6 @@ form.addEventListener('submit', function(event) {
             tituloProducto: campoTitulo.value,
             descripcionProducto: campoDesc.value,
         };
-        
-     	 const datoServicio = {
-		"nombre": campoTitulo.value.trim(),
-  		"descripcion": campoDesc.value.trim(),
-  		"imagen": campoImg.value.trim(),
-  		"cotizacion": null
-	   };
-       
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer: $sessionStorage.getItem('authToken')}`);
-myHeaders.append("Content-Type", "application/json");
-
-const raw = JSON.stringify(datoServicio);
-
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
-
-fetch("http://localhost:8080/api/servicios/", requestOptions)
-  .then((response) => response.text())
-  .then((result) => localStorage.setItem("productos", Json.stringify(result)))
-  .catch((error) => console.error(error));
 
         // Guardar la información en localStorage
         existingProducts.push(productoInfo);
@@ -124,5 +99,3 @@ fetch("http://localhost:8080/api/servicios/", requestOptions)
 
     form.classList.add('was-validated');
 });
-
-
