@@ -133,20 +133,29 @@ function añadirItem(item) {
   
   function cargarProductos() {
     // Obtener los productos guardados en el localStorage
-    const productos = JSON.parse(localStorage.getItem('productos')) || [];
-
-    // Si existen productos, agregarlos al contenedor
-    productos.forEach(producto => {
-        addItem({
-            name: producto.tituloProducto,
-            img: producto.imgProducto,
-            description: producto.descripcionProducto
-        });
-          });
+    let productos = JSON.parse(localStorage.getItem('productos')) || [];
+    
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+    
+    fetch("/api/servicios/", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            console.log(result);
+            // Si existen productos, agregarlos al contenedor
+            productos = JSON.parse(result);
+            productos.forEach(producto => {
+                addItem({
+                    name: producto.nombre,
+                    img: producto.imagen,
+                    description: producto.descripcion
+                });
+            });
+        })
+        .catch((error) => console.error(error)); // Mueve esto fuera del forEach
 }
-        
-
-	
 
 // Asegúrate de que se ejecuta la función cuando el DOM está completamente cargado
 window.addEventListener('load', cargarProductos);

@@ -90,6 +90,31 @@ form.addEventListener('submit', function(event) {
             txtCorreo: txtCorreo.value,
             txtContraseña: txtContraseña.value
         };
+        
+        const userInformation={
+			"nombres": txtNombre.value.trim(),
+			"apellidos": null,
+			"telefono": txtNumero.value.trim(),
+			"correo": txtCorreo.value,
+			"contrasena": txtContraseña.value.trim()
+};
+        
+        const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const raw = JSON.stringify(userInformation);
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("/api/usuarios/", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
 
         // Mostrar alerta y esperar la interacción del usuario
         Swal.fire({
