@@ -23,14 +23,14 @@ class BackendApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
-	private final String token="Bearer: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJdmFuTG9wQWdAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjkxODk0NjIsImV4cCI6MTcyOTIyNTQ2Mn0.9RRiFe5sBY4-sb_TfCwEHof2-sthY0FWb5HEfXCL0ao";
+	private final String token="Bearer: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqY3ZhbEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTI0MzQ0NywiZXhwIjoxNzI5Mjc5NDQ3fQ.0Fo4ES8j3dDO7JWTDbFzFs--uqc7yZ6yS5N9HKtF6Rc";
 	
 	@Test
-	@DisplayName("Se prueba el endpoint http://localhost/8080/api/servicios/2")
+	@DisplayName("Se prueba el endpoint http://localhost/8080/api/servicios/1")
 	void pruebaGET() throws Exception {
-		this.mockMvc.perform( get("/api/servicios/2")
+		this.mockMvc.perform( get("/api/servicios/1")
 				).andDo(print()).andExpect(status().isOk()
-						).andExpect(content().string(containsString("port_web.jpg")));	
+						).andExpect(content().string(containsString("AppAnd.jpg")));	
 	}
 	
 	@Test
